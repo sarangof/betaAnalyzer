@@ -6,7 +6,7 @@ import pandas as pd
 
 app = dash.Dash()
 
-df = pd.read_excel('betaAnalyser_sample.xlsx')
+df = pd.read_csv('https://raw.githubusercontent.com/sarangof/betaAnalyzer/master/betaAnalyser_sample.csv')
 
 available_indicators = df.columns.values
 
@@ -39,30 +39,12 @@ app.layout = html.Div([
     dash.dependencies.Output('indicator-graphic', 'figure'),
     [dash.dependencies.Input('xaxis-column', 'value'),
      dash.dependencies.Input('yaxis-column', 'value')])
-def update_graph(xaxis_column_name, yaxis_column_name,
-                 xaxis_type, yaxis_type,
-                 year_value):
-    dff = df[df['Year'] == year_value]
-
+def update_graph(xaxis_column_name, yaxis_column_name):
     return {
         'data': [go.Bar(
-            x=dff[dff['Indicator Name'] == xaxis_column_name]['Value'],
-            y=dff[dff['Indicator Name'] == yaxis_column_name]['Value'],
-            text=dff[dff['Indicator Name'] == yaxis_column_name]['Country Name'],
-            marker={
-                'size': 15,
-                'opacity': 0.5,
-                'line': {'width': 0.5, 'color': 'white'}
-            }
-        )],
-        'layout': go.Layout(
-            xaxis={
-                'title': xaxis_column_name
-            },
-            yaxis={
-                'title': yaxis_column_name
-            }
-        )
+            x=df[xaxis_column_name].values,
+            y=df[yaxis_column_name].values
+                )]
     }
 
 
