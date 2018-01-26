@@ -1,0 +1,24 @@
+﻿ID,Group,Outcome A,Outcome B
+123456,Intervention,A,0.1
+123457,Control,B,82.2
+123458,Control,C,61.8
+123459,Intervention,A,33.3
+123460,Intervention,A,20.8
+123461,Control,C,54.7
+123462,Intervention,C,36.2
+123463,Intervention,C,36.9
+123464,Control,C,52.0
+123465,Control,B,68.8
+123466,Intervention,A,3.4
+123467,Control,C,64.7
+123468,Intervention,A,28.3
+123469,Control,B,80.0
+123470,Control,C,55.3
+123471,Control,B,94.8
+123472,Control,B,95.4
+123473,Intervention,C,43.2
+123474,Intervention,A,27.1
+123475,Intervention,A,4.3
+123476,Control,B,74.1
+123477,Intervention,C,34.4
+123478,Control,C,55.4
