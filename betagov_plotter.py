@@ -43,7 +43,6 @@ def betagov_plot(title, x_var, y_var, x_label,y_label, file_name, width_param, h
                 hue=hue,
                 order=order);
 
-
     bplot = sns.barplot(hue=data['version'],
                     y=data['Average score'],
                     x=data['grade'],
@@ -53,7 +52,6 @@ def betagov_plot(title, x_var, y_var, x_label,y_label, file_name, width_param, h
                     order=['Third','Fourth','Fifth'],
                     errwidth=2,
                     saturation=1);
-
 
     plt.ylabel(y_label,size=18, **csfont);
     plt.title('', **csfont)
@@ -82,9 +80,9 @@ def betagov_plot(title, x_var, y_var, x_label,y_label, file_name, width_param, h
     return fig
 
 
-
 app = dash.Dash()
-app.css.append_css({'external_url': 'https://cdn.rawgit.com/plotly/dash-app-stylesheets/2d266c578d2a6e8850ebce48fdb52759b2aef506/stylesheet-oil-and-gas.css'})
+#app.css.append_css({'external_url': 'http://betagov.org/css/style.css'})
+#app.css.append_css({'external_url': 'https://cdn.rawgit.com/plotly/dash-app-stylesheets/2d266c578d2a6e8850ebce48fdb52759b2aef506/stylesheet-oil-and-gas.css'})
 
 df = pd.read_csv('https://raw.githubusercontent.com/sarangof/betaAnalyzer/master/betaAnalyser_sample.csv')
 title = 'Average score'
@@ -121,11 +119,11 @@ app.layout = html.Div([
         ],style={'width': '48%', 'float': 'right', 'display': 'inline-block'})
     ]),
 
-    dcc.Graph(id='indicator-graphic'),
+    dcc.Graph(id='beta-graphic'),
 ])
 
 @app.callback(
-    dash.dependencies.Output('indicator-graphic', 'figure'),
+    dash.dependencies.Output('beta-graphic', 'figure'),
     [dash.dependencies.Input('xaxis-column', 'value'),
      dash.dependencies.Input('yaxis-column', 'value')])
 def update_graph(xaxis_column_name, yaxis_column_name):
